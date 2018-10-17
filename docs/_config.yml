@@ -1,1 +1,9 @@
 theme: jekyll-theme-architect
+title: "Unix tutorial for biologists"
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
