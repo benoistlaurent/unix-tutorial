@@ -10,51 +10,51 @@ Where am I?
 `pwd`
 
 
-List the content of a directory
--------------------------------
+Listing the content of a directory
+----------------------------------
 
 ### Identifying files and directories
 
 `ls`
 `ls -l`
 
-### Know files size
+### Knowing files size
 
 `ls -lh`
 
-### Know directories size
+### Knowing directories size
 
 `du -h`
 `du --max-depth=1`
 
-### Display the tree structure
+### Displaying the tree structure
 
 `tree`
 
 
-Change directory
-----------------
+Changing directory
+------------------
 
 `cd`
 `cd ..`
 
 
-Copy files and directories
---------------------------
+Copying files and directories
+-----------------------------
 
 `cp`
 `cp -r`
 `rsync -a`
 
 
-Move files and directories
---------------------------
+Moving files and directories
+----------------------------
 
 `mv`
 
 
-Create a directory
-------------------
+Creating a directory
+--------------------
 
 `mkdir`
 
@@ -73,8 +73,8 @@ Autocompletion
 `tab`
 
 
-Search files and directories
-----------------------------
+Searching files and directories
+-------------------------------
 
 `find`
 

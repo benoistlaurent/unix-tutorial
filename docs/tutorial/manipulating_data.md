@@ -4,23 +4,23 @@
 Manipulating data
 =================
 
-Edit a file
------------
+Editing a file
+---------------
 
 `vi`
 `nano`
 
 
-Count the number of lines/words/caracters in a file
----------------------------------------------------
+Counting the number of lines/words/caracters in a file
+-------------------------------------------------------
 
 `wc`
 `wc -l`
 `wc -c`
 
 
-Display the content of a file
------------------------------
+Displaying the content of a file
+--------------------------------
 
 `cat`
 `more`
@@ -29,8 +29,8 @@ Display the content of a file
 `less`
 
 
-Search a pattern in a file
---------------------------
+Searching a pattern in a file
+------------------------------
 
 `grep`
 `grep -v`
@@ -40,23 +40,23 @@ Search a pattern in a file
 `grep -r`
 
 
-Extract a file columns
-----------------------
+Extracting a file columns
+-------------------------
 
 `cut -c`
 `cut -d -f`
 
 
-Concatenate files
------------------
+Concatenating files
+-------------------
 
 `cat`
 `paste`
 `paste -d`
 
 
-Sort a file
------------
+Sorting a file
+--------------
 
 `sort`
 `sort -r`
@@ -64,8 +64,8 @@ Sort a file
 `sort -n`
 
 
-Remove duplicate lines
-----------------------
+Removing duplicate lines
+------------------------
 
 `uniq`
 `uniq -c`
@@ -73,8 +73,8 @@ Remove duplicate lines
 `uniq -u`
 
 
-Compare files
--------------
+Comparing files
+---------------
 
 `cmp`
 `diff`
@@ -82,8 +82,8 @@ Compare files
 `meld`
 
 
-Substitute text
----------------
+Substituting text
+-----------------
 
 `sed`
 `awk`

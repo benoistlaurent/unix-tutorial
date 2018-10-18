@@ -4,16 +4,16 @@
 Processes
 =========
 
-Display alive processes
------------------------
+Displaying alive processes
+--------------------------
 
 `ps`
 `top`
 `htop`
 
 
-Stop a process
---------------
+Stopping a process
+------------------
 
 `Ctrl-C`
 `kill`
@@ -26,8 +26,8 @@ Pausing a job
 `Ctrl-Z`
 
 
-Put a job in background
------------------------
+Putting a job in background
+---------------------------
 
 `bg`
 `fg`
