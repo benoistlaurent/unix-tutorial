@@ -1,8 +1,7 @@
 ---
 ---
 
-Tutorial
-========
+# Tutorial
 
 - [Manipulating files and directories](manipulating_files_and_directories)
 - [Manipulating data](manipulating_data)

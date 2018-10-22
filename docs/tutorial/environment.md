@@ -1,11 +1,9 @@
 ---
 ---
 
-Environment
-===========
+# Environment
 
-Environment variables
----------------------
+## Environment variables
 
 ### Listing environment variables
 
@@ -29,8 +27,7 @@ Environment variables
 - `PATH`
 
 
-Configuring the environment
----------------------------
+## Configuring the environment
 
 ### The `$HOME/.bashrc` file
 

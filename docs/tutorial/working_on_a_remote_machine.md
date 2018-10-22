@@ -1,8 +1,7 @@
 ---
 ---
 
-Working on a remote machine
-===========================
+# Working on a remote machine
 
 `ssh`
 `scp`

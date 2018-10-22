@@ -1,11 +1,9 @@
 ---
 ---
 
-Manipulating files and directories
-==================================
+# Manipulating files and directories
 
-Where am I?
------------
+## Where am I?
 
 Files and directories are identified by an **absolute path**, which shows how
 to reach it from the *root directory*.
@@ -36,8 +34,7 @@ $ pwd
 ```
 
 
-Listing the content of a directory
-----------------------------------
+## Listing the content of a directory
 
 To display the content of a directory, use the `ls` command (which stands
 for "listing").
@@ -97,49 +94,42 @@ $ ls -lh
 `tree`
 
 
-Changing directory
-------------------
+## Changing directory
 
 `cd`
 `cd ..`
 
 
-Copying files and directories
------------------------------
+## Copying files and directories
 
 `cp`
 `cp -r`
 `rsync -a`
 
 
-Moving files and directories
-----------------------------
+## Moving files and directories
 
 `mv`
 
 
-Creating a directory
---------------------
+## Creating a directory
 
 `mkdir`
 
 
-Delete files and directories
-----------------------------
+## Delete files and directories
 
 `rm`
 `rmdir`
 `rm -r`
 
 
-Autocompletion
---------------
+## Autocompletion
 
 `tab`
 
 
-Searching files and directories
--------------------------------
+## Searching files and directories
 
 `find`
 
