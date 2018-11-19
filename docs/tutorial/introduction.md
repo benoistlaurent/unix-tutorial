@@ -20,6 +20,15 @@ Example:
 ![image](/assets/img/tutorial/command_example.001.jpeg)
 
 
+## Special names
+
+There are some special names which can be used in name
+and place of files and directories.
+
+- `.` current directory 
+- `..` parent directory
+- `*` all files and directories
+
 ## Getting help
 
 ### From the `man`
