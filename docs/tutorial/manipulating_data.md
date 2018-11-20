@@ -108,8 +108,8 @@ There are a number of terminal file editors.
 The winner in the category "easy hands-on" is probably `nano`, which has
 the advantage that keyboard shortcut are display at the bottom of the screen.
 
-**Question**: use `nano` to create a file `animals.txt` with 3 lines: 'dog',
-'cat', 'rabbit'.
+**Question**: use `nano` to create a file `animals.txt` with 3 lines: "dog",
+"cat", "rabbit".
 
 Other historical and still widely used editors are `vi` and `emacs`, which
 are both very powerful.
@@ -161,25 +161,110 @@ $ wc -l molecules/*.pdb
 
 ## Searching a pattern in a file
 
-`grep`
-`grep -v`
-`grep -i`
-`grep -n`
-`grep -c`
-`grep -r`
+`grep` prints lines matching a pattern.
 
+For example, to get the "canine" lines from tooth.csv, just type
+
+```bash
+$ grep canine tooth.csv
+2015-05-27,canine
+2016-12-09,canine
+2015-10-18,canine
+2016-06-13,canine
+2015-05-10,canine
+2016-05-07,canine
+2015-10-26,canine
+2016-07-08,canine
+2015-02-14,canine
+2016-08-12,canine
+2016-09-17,canine
+2016-02-07,canine
+2017-11-12,canine
+2016-08-17,canine
+2015-10-23,canine
+2015-12-09,canine
+2015-12-03,canine
+2016-03-07,canine
+2017-03-04,canine
+2015-03-05,canine
+```
+
+`grep` has a lot of useful options:
+
+- `-v`, reverse search
+- `-i`, ignore case
+- `-n`, prefix each line with the line number
+- `-c`, count the number of occurences of the pattern
+- `-r`, recursively explore files
+
+**Question**: how to get the number of non-canine line?
+
+```bash
+$ grep -vc canine tooth.csv
+81
+```
 
 ## Extracting a file columns
 
-`cut -c`
-`cut -d -f`
+The command `cut` allows to extract columns from a file in various ways.
 
+For example, to extract the date column from `tooth.csv`, several approches
+can be used:
 
-## Concatenating files
+```bash
+$ # Extract each line first 10 characters
+$ cut -c 1-10 tooth.csv
+2015-08-03
+2015-06-21
+2015-10-26
+2017-01-30
+2015-05-27
+2016-07-14
+2016-01-21
+2015-05-14
+2016-03-07
+# [...]
+$ # Extract the first column using "," as a separator
+$ cut -d "," -f 1 tooth.csv
+2015-08-03
+2015-06-21
+2015-10-26
+2017-01-30
+2015-05-27
+2016-07-14
+2016-01-21
+2015-05-14
+2016-03-07
+# [...]
+```
 
-`cat`
-`paste`
-`paste -d`
+Similarly, to extract the teeth column:
+
+```bash
+$ # Extract characters 12 to end-of-line
+$ cut -c 12- tooth.csv
+molar
+molar
+molar
+premolar
+canine
+incisor
+premolar
+incisor
+incisor
+# [...]
+$ # Extract second column using "," as column separator
+$ cut -d "," -f 2 tooth.csv
+molar
+molar
+molar
+premolar
+canine
+incisor
+premolar
+incisor
+incisor
+```
 
 
 ## Sorting a file
@@ -196,6 +281,13 @@ $ wc -l molecules/*.pdb
 `uniq -c`
 `uniq -d`
 `uniq -u`
+
+
+## Concatenating files
+
+`cat`
+`paste`
+`paste -d`
 
 
 ## Comparing files
