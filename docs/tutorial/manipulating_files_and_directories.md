@@ -310,11 +310,6 @@ $ rmdir tempdir  # Alternatively (rm -r tempdir)
 {:.answer}
 
 
-## Autocompletion
-
-`tab`
-
-
 ## Searching files and directories
 
 The command `find`, which quite intuitively searches and finds files and directories,
@@ -322,7 +317,79 @@ is a very powerful and this tutorial will not cover 10% of its capacities.
 
 So this is a very short list of examples
 
+
+## By name
+
 ```bash
-$ # zefpkozefpk
-find -name coucou
+$ # find files and directories named "ethane.pdb"
+$ find . -name ethane.pdb
+./molecules/ethane.pdb
+
+$ # find files and directories named "ethane.pdb" and located in /home/fish
+$ find /home/fish -name ethane.pdb
+$ # no result found
 ```
+
+
+### By extension
+
+```bash
+$ # find files and directories with extension ".pdb"
+$ find . -name *.pdb
+./molecules/octane.pdb
+./molecules/propane.pdb
+./molecules/cubane.pdb
+./molecules/methane.pdb
+./molecules/ethane.pdb
+./molecules/pentane.pdb
+```
+
+
+### By prefix
+
+```bash
+$ # find files and directories starting with "c"
+$ find . -name 'c*'
+./molecules/cubane.pdb
+./creatures
+```
+
+
+### By size
+
+```bash
+$ # find files and directories larger than 2K
+$ find . -size '+2k'
+.
+./molecules
+./iris.csv
+./creatures
+```
+
+
+### By modification date
+
+```bash
+$ # find files and directories modified in the last 60 days
+$ find . -mtime +60
+$ # no result found
+```
+
+
+### Find only files/directories
+
+```bash
+$ # find files and directories starting with "c"
+$ find . -name 'c*'
+./molecules/cubane.pdb
+./creatures
+
+$ # find only files starting with "c"
+$ find . -type f -name 'c*'
+./molecules/cubane.pdb
+
+$ # find only directories starting with "c"
+$ find . -type f -name 'c*'
+./creatures
+```
+
