@@ -97,7 +97,7 @@ tail -n5 iris.csv
 6.3,2.5,5,1.9,virginica
 6.5,3,5.2,2,virginica
 6.2,3.4,5.4,2.3,virginica
-5.9,3,5.1,1.8,virginicafish@ocean:/data$
+5.9,3,5.1,1.8,virginica
 ```
 {:.answer}
 
@@ -238,7 +238,7 @@ $ cut -d "," -f 1 tooth.csv
 # [...]
 ```
 
-Similarly, to extract the teeth column:
+**Question**: find two ways to extract the teeth column from `tooth.csv`.
 
 ```bash
 $ # Extract characters 12 to end-of-line
@@ -253,7 +253,7 @@ premolar
 incisor
 incisor
 # [...]
-$ # Extract second column using "," as column separator
+$ # Extract the second column using "," as column separator
 $ cut -d "," -f 2 tooth.csv
 molar
 molar
@@ -265,14 +265,63 @@ premolar
 incisor
 incisor
 ```
+{:.answer}
 
 
 ## Sorting a file
 
-`sort`
-`sort -r`
-`sort -f`
-`sort -n`
+Quite intuitively, `sort` allows to sort a file lines:
+
+```bash
+$ sort tooth.csv
+2015-01-16,incisor
+2015-02-14,canine
+2015-02-22,molar
+2015-02-25,incisor
+2015-03-05,canine
+2015-03-20,premolar
+2015-03-31,premolar
+2015-04-16,molar
+2015-04-23,premolar
+2015-05-10,canine
+# [...]
+```
+
+Importantly, by default, the sort is not a numeric sort but rather a sort by
+ASCII code.
+
+So when sorting `animals.txt`, this is what happens:
+
+```bash
+$ sort animals.txt
+11 cat
+1 dog
+23 bird
+2 rabbit
+3 chicken
+```
+
+**Question**: how to sort `animals.txt` properly? How to sort it in decreasing order?
+
+```bash
+# Numeric sort
+$ sort -n animals.txt
+1 dog
+2 rabbit
+3 chicken
+11 cat
+23 bird
+
+# Reverse numeric sort
+$ sort -nr animals.txt
+23 bird
+11 cat
+3 chicken
+2 rabbit
+1 dog
+```
+
+**Question**: how to sort `tooth.csv` by increasing day number?
 
 
 ## Removing duplicate lines
@@ -285,21 +334,105 @@ incisor
 
 ## Concatenating files
 
-`cat`
-`paste`
-`paste -d`
+As seen [previously](#displaying-the-entire-file), `cat` allows both to
+display a single file and to concatenate several file one after the other.
+
+`paste` allows to concatenate file column wide:
+
+```bash
+$ # Concatenate animals.txt column wide
+$ paste animals.txt animals.txt
+
+$ # Concatenate animals.txt column wide with custom separator (" - ")
+$ paste -d "|" animals.txt animals.txt
+2 rabbit|2 rabbit
+1 dog|1 dog
+11 cat|11 cat
+23 bird|23 bird
+3 chicken|3 chicken
+```
 
 
 ## Comparing files
 
-`cmp`
-`diff`
-`diff -y`
-`meld`
+Comparing files can be done in numerous ways.
+These are the most common tools.
+
+`cmp` outputs the position of the difference if files are different, else nothing:
+
+```bash
+$ cmp animals.txt animals2.txt
+animals.txt animals2.txt differ: byte 23, line 4
+```
+
+`diff` outputs the line number of the difference, and the difference:
+
+```bash
+$ diff animals.txt animals2.txt
+3a4
+> 6 cow
+```
+
+This interprets as "there is a difference on line 3 of animals.txt which translates
+to line 4 of animals2.txt: the line '6 cow' has been inserted".
 
 
-## Substituting text
+## Modifying file content
 
+To make a simple change, you probably want to use a classic text editor.
+
+But sometimes, you need to make more complicated changes, e.g. changing all
+the occurences of a string in a file.
+
+### sed
+
+`sed` is a non-interactive text editor.
+It edits a file content based on the rules you provide.
+
+The usage for this tool is `sed [options] {script} input-file`.
+
+The input script defines the rules for editing the text.
+The script language can be quite complicated so go through a simple set of
+examples.
+
+
+```bash
+$ # Replace all 'T' with 'U'
+$ sed 's/T/U/g' creatures/basilisk.fasta
+> COMMON NAME: basilisk;CLASSIFICAUION: basiliscus vulgaris;UPDAUED: 1745-05-02;
+CCCCAACGAGGAAACAGAUCAUUAGAAGAUCUGUCGCGAACCGCACCUCUCCUAUCUACA
+UGUUUGUCUCUGGGUGGGGAUCCAUAGGCAGCAUUACCAGCACCCUACGAUAAGGACUUC
+CGUCAGAGAUUUCCUGGUAUUAUACAGCUCCUAGUGUUAUCCAGUUUGUGUCGUCCCAUA
+GCCAGCAAGAGCCAAACAAAAGCCGGGUCGCUUUACCUUAAAGCCGAGGGGGGUGGUACG
+CCGAACAUAAACGCUUUAACGUCCCUCCAGGCUGAUAAUCGUUUAAGCACACGUGGUCUA
+GAGUUGCGCUUACCGGACAAACCUGCGCGUUGAAAGGGUUACGCCUGGUACGAAAUAAGA
+CGAACCCCAGGACCCAGCAGACAAAGGAACGUGCUAGGCCCAUAUAAUCAGGUAGAUCGA
+UCUCUCUCCUAAGUUGUGGUCAAACAGGCGCGCGCUAGUUGGGUAUGCCCGCCCAAUAAC
+UGGUGGGGCCUGUGUGUAAACUUCGAUCAAUUUUGCAAUUUAUGUGCAGCUAACUGAAUA
+UGUGAUGUGUUGGAACCCGGACUUCCUUUACAUUUCGCGCCCUAGUGUUUCAAGCGUCGC
+UGAGGUUAUGAUUUAUAGGACACACUCAGCCGCGAACACACAGUGUCAUGACUAAGUAGA
+AUCACCCAUAUUCUCGUUAGUGCGAUUGUACCGCUUGAACCUCGUAUGCCUGGACCCGCU
+UCGAUUUACAGCAAUUCGACUGGUGGUGAUUAACUUGAAGGAUAUGGUUUCGGUACCGAA
+AAGGGUCGCGCAAGUGUUCCCGGGACAAUAGUUCUGCUAAGAUAAGUAUGUGCCGACUUA
+CCCGACCGUCUAGGUUAUAAGGCACAACCGCUUCACUGUAGAGGUGUACAAGGAUCCGUU
+GCGCGGGCGGCAGUCUAUGUUUUUCGACACUGGACUGCUUCCCUUUGAGGGUGGAUUUUU
+CGUAACGGGUGAGUCCCUUGUGAUUCCAGACACGGGUUGCCGGGCGCUACCCGCCGACGC
+CAGGCUUGGCAAGAGCGGUAUAAGGGCUCGCUACCACUUGUACUAGACUGAUUUGCGGAC
+GGUAGUAGCGCGGUGAUCCCUAUCAUACGGGGUUUGGUGUAUGAGCCCUGCUGUCUUUUC
+UAGCGUACCACAGAUUGAACUCCUCUUCUCGCGUUUCAGCGGUUAAAAUUGCGAUCCUCU
+CAGACCUUUGGUUGCCUUCGGUCCUUCCACGCCUUCCUAUGAUAGUAGCCUCACCUUCCA
+UCUCAAAUCCCUCCCGCGACCUUUGAUUGUACCGUUCAAGCCCUGACAUACCCACUCAAU
+AUUGACCCCUGCCGUAUAGACGUUGUCGGGAUAGCCAGAACCAGUACUCUCUAUCGGAAG
+CGUGACAGGCCCAAAUACCUCGUUUAAAGCUGGACGCAUCACACUUGCUUGACUAACAGA
+GUGCUGGCCCGUGUUAUUCAGCUAAUGCAUCAUGGGAUCAGACGCCUGUAUAUACAAUUU
+UCAACUGCUCGAACUACUCGCCAAAACACUUUCGACUAGGCGAUCGACCAAGAAAAGAGA
+CUGGACUGCUUACAGAGGUUUGAACUUUACCGCGCCCACC
+```
+
+If we analyse the script part of this command, we have
+
+- `s/` standing for *substitute*
+- `T/U/` meaning 
 `sed`
 `awk`
 
