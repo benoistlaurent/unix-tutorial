@@ -326,6 +326,12 @@ $ sort -nr animals/animals.txt
 
 ## Removing duplicate lines
 
+`uniq` helps you report/omit repeated lines.
+Importantly, the way it works is that it reports/omit **consecutive** repeated
+lines.
+Meaning that if you want to actually remove repeated lines, you first have to
+sort the file first.
+
 `uniq`
 `uniq -c`
 `uniq -d`
