@@ -290,10 +290,10 @@ $ sort tooth.csv
 Importantly, by default, the sort is not a numeric sort but rather a sort by
 ASCII code.
 
-So when sorting `animals.txt`, this is what happens:
+So when sorting `animals/animals.txt`, this is what happens:
 
 ```bash
-$ sort animals.txt
+$ sort animals/animals.txt
 11 cat
 1 dog
 23 bird
@@ -301,11 +301,11 @@ $ sort animals.txt
 3 chicken
 ```
 
-**Question**: how to sort `animals.txt` properly? How to sort it in decreasing order?
+**Question**: how to sort `animals/animals.txt` properly? How to sort it in decreasing order?
 
 ```bash
 # Numeric sort
-$ sort -n animals.txt
+$ sort -n animals/animals.txt
 1 dog
 2 rabbit
 3 chicken
@@ -313,7 +313,7 @@ $ sort -n animals.txt
 23 bird
 
 # Reverse numeric sort
-$ sort -nr animals.txt
+$ sort -nr animals/animals.txt
 23 bird
 11 cat
 3 chicken
@@ -340,11 +340,11 @@ display a single file and to concatenate several file one after the other.
 `paste` allows to concatenate file column wide:
 
 ```bash
-$ # Concatenate animals.txt column wide
-$ paste animals.txt animals.txt
+$ # Concatenate animals/animals.txt column wide
+$ paste animals/animals.txt animals/animals.txt
 
-$ # Concatenate animals.txt column wide with custom separator (" - ")
-$ paste -d "|" animals.txt animals.txt
+$ # Concatenate animals/animals.txt column wide with custom separator (" - ")
+$ paste -d "|" animals/animals.txt animals/animals.txt
 2 rabbit|2 rabbit
 1 dog|1 dog
 11 cat|11 cat
