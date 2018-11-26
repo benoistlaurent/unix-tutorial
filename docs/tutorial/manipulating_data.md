@@ -328,9 +328,32 @@ $ sort -nr animals/animals.txt
 
 `uniq` helps you report/omit repeated lines.
 Importantly, the way it works is that it reports/omit **consecutive** repeated
-lines.
-Meaning that if you want to actually remove repeated lines, you first have to
-sort the file first.
+lines:
+
+```bash
+$ # animals/animals4.txt is made of 3 concatenations of animals.txt
+$ uniq animals/animals4.txt
+2 rabbit
+1 dog
+11 cat
+23 bird
+3 chicken
+2 rabbit
+1 dog
+11 cat
+23 bird
+3 chicken
+2 rabbit
+1 dog
+11 cat
+23 bird
+3 chicken
+```
+
+We can see above that there are still repeated lines.
+This is because uniq remove repeated **consecutive** lines and here 
+repeated lines are not consecutive.
+
 
 `uniq`
 `uniq -c`
@@ -390,55 +413,52 @@ To make a simple change, you probably want to use a classic text editor.
 But sometimes, you need to make more complicated changes, e.g. changing all
 the occurences of a string in a file.
 
-### sed
+### Replacing all occurences of a word in a file
 
-`sed` is a non-interactive text editor.
-It edits a file content based on the rules you provide.
-
-The usage for this tool is `sed [options] {script} input-file`.
-
-The input script defines the rules for editing the text.
-The script language can be quite complicated so go through a simple set of
-examples.
-
+To to this, `sed` is probably the most straight-forward solution:
 
 ```bash
-$ # Replace all 'T' with 'U'
-$ sed 's/T/U/g' creatures/basilisk.fasta
-> COMMON NAME: basilisk;CLASSIFICAUION: basiliscus vulgaris;UPDAUED: 1745-05-02;
-CCCCAACGAGGAAACAGAUCAUUAGAAGAUCUGUCGCGAACCGCACCUCUCCUAUCUACA
-UGUUUGUCUCUGGGUGGGGAUCCAUAGGCAGCAUUACCAGCACCCUACGAUAAGGACUUC
-CGUCAGAGAUUUCCUGGUAUUAUACAGCUCCUAGUGUUAUCCAGUUUGUGUCGUCCCAUA
-GCCAGCAAGAGCCAAACAAAAGCCGGGUCGCUUUACCUUAAAGCCGAGGGGGGUGGUACG
-CCGAACAUAAACGCUUUAACGUCCCUCCAGGCUGAUAAUCGUUUAAGCACACGUGGUCUA
-GAGUUGCGCUUACCGGACAAACCUGCGCGUUGAAAGGGUUACGCCUGGUACGAAAUAAGA
-CGAACCCCAGGACCCAGCAGACAAAGGAACGUGCUAGGCCCAUAUAAUCAGGUAGAUCGA
-UCUCUCUCCUAAGUUGUGGUCAAACAGGCGCGCGCUAGUUGGGUAUGCCCGCCCAAUAAC
-UGGUGGGGCCUGUGUGUAAACUUCGAUCAAUUUUGCAAUUUAUGUGCAGCUAACUGAAUA
-UGUGAUGUGUUGGAACCCGGACUUCCUUUACAUUUCGCGCCCUAGUGUUUCAAGCGUCGC
-UGAGGUUAUGAUUUAUAGGACACACUCAGCCGCGAACACACAGUGUCAUGACUAAGUAGA
-AUCACCCAUAUUCUCGUUAGUGCGAUUGUACCGCUUGAACCUCGUAUGCCUGGACCCGCU
-UCGAUUUACAGCAAUUCGACUGGUGGUGAUUAACUUGAAGGAUAUGGUUUCGGUACCGAA
-AAGGGUCGCGCAAGUGUUCCCGGGACAAUAGUUCUGCUAAGAUAAGUAUGUGCCGACUUA
-CCCGACCGUCUAGGUUAUAAGGCACAACCGCUUCACUGUAGAGGUGUACAAGGAUCCGUU
-GCGCGGGCGGCAGUCUAUGUUUUUCGACACUGGACUGCUUCCCUUUGAGGGUGGAUUUUU
-CGUAACGGGUGAGUCCCUUGUGAUUCCAGACACGGGUUGCCGGGCGCUACCCGCCGACGC
-CAGGCUUGGCAAGAGCGGUAUAAGGGCUCGCUACCACUUGUACUAGACUGAUUUGCGGAC
-GGUAGUAGCGCGGUGAUCCCUAUCAUACGGGGUUUGGUGUAUGAGCCCUGCUGUCUUUUC
-UAGCGUACCACAGAUUGAACUCCUCUUCUCGCGUUUCAGCGGUUAAAAUUGCGAUCCUCU
-CAGACCUUUGGUUGCCUUCGGUCCUUCCACGCCUUCCUAUGAUAGUAGCCUCACCUUCCA
-UCUCAAAUCCCUCCCGCGACCUUUGAUUGUACCGUUCAAGCCCUGACAUACCCACUCAAU
-AUUGACCCCUGCCGUAUAGACGUUGUCGGGAUAGCCAGAACCAGUACUCUCUAUCGGAAG
-CGUGACAGGCCCAAAUACCUCGUUUAAAGCUGGACGCAUCACACUUGCUUGACUAACAGA
-GUGCUGGCCCGUGUUAUUCAGCUAAUGCAUCAUGGGAUCAGACGCCUGUAUAUACAAUUU
-UCAACUGCUCGAACUACUCGCCAAAACACUUUCGACUAGGCGAUCGACCAAGAAAAGAGA
-CUGGACUGCUUACAGAGGUUUGAACUUUACCGCGCCCACC
+$ # Replace all occurences of 'rabbit' with 'bunny'
+$ sed 's/rabbit/bunny/g' animals/animals.txt
+2 bunny
+1 dog
+11 cat
+23 bird
+3 chicken
 ```
 
-If we analyse the script part of this command, we have
+The script part of this command tells `sed`:
 
-- `s/` standing for *substitute*
-- `T/U/` meaning 
-`sed`
-`awk`
+- `s/` stands for "substitute"
+- `rabbit/bunny/` means"rabbit" with "bunny"
+- the trailing `g` indicates that we want all occurences on the line to be substituted
 
+So, in one sentence, "replace all occurences of 'rabbit' with 'bunny'".
+
+
+### Removing a line
+
+#### By line number
+
+```bash
+$ # Remove lines 1 and 2
+$ sed '1,2d' animals/animals.txt
+11 cat
+23 bird
+3 chicken
+```
+
+#### By pattern
+
+```bash
+$ # Remove the line that contains 'chicken'
+$ sed '/chicken/d' animals/animals.txt
+2 rabbit
+1 dog
+11 cat
+23 bird
+```
+
+`sed` is actually a lot more poweful than only those two simple examples.
+If you want to know more about `sed` there are numerous quality tutorials
+around.
