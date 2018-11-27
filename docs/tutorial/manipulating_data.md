@@ -65,7 +65,7 @@ screen by screen, which is very usefull when reading large files.
 **Question**: in both programs, use `/` to find the occurences of 'virginica'.
 
 
-### Displaying only beginning of the file
+### Displaying only the beginning of the file
 
 Displaying the beginning of the file, or *head*, is done thanks to the
 `head` command.
@@ -83,7 +83,7 @@ sepal_length,sepal_width,petal_length,petal_width,species
 {:.answer}
 
 
-### Displaying only end of the file
+### Displaying only the end of the file
 
 Displaying the beginning of the file, or *tail*, is done thanks to the
 `tail` command.
@@ -102,7 +102,7 @@ tail -n5 iris.csv
 {:.answer}
 
 
-## Saving a command output to a file
+## Saving the output of a command to a file
 
 Most standard unix tools do not have an option for naming an output file.
 It is because the standard way to store a command output is by **redirecting**
@@ -399,54 +399,23 @@ $ sort -nr animals/animals.txt
 
 **Question**: how to sort `tooth.csv` by increasing day number?
 
-
-## Removing duplicate lines
-
-`uniq` helps you report/omit repeated lines.
-Importantly, the way it works is that it reports/omit **consecutive** repeated
-lines:
-
 ```bash
-$ # animals/animals4.txt is made of 3 concatenations of animals.txt
-$ uniq animals/animals4.txt
-2 rabbit
-1 dog
-11 cat
-23 bird
-3 chicken
-2 rabbit
-1 dog
-11 cat
-23 bird
-3 chicken
-2 rabbit
-1 dog
-11 cat
-23 bird
-3 chicken
+$ # We have to tell sort that the field separator we want to use is '-'
+$ # and then that we want to sort by the 3rd field.
+$ sort tooth.csv -t- -k3
+2017-11-01,premolar
+2017-12-02,incisor
+2015-12-03,canine
+2016-06-03,incisor
+2017-08-03,incisor
+2015-08-03,molar
+2016-06-03,premolar
+2017-03-04,canine
+2015-12-04,incisor
+2017-02-04,premolar
+# [...]
 ```
-
-We can see above that there are still repeated lines.
-This is because uniq remove repeated **consecutive** lines and here 
-repeated lines are not consecutive.
-
-That's why we need to sort the input file first:
-
-```bash
-$ sort animals/animals4.txt > animals4_sorted.txt
-$ uniq animals4_sorted.txt
-11 cat
-1 dog
-23 bird
-2 rabbit
-3 chicken
-```
-
-`uniq` has several useful options such has
-
-- `-c` for counting
-- `-d` for showing duplicate lines
-- `-u` for showing uniq lines
+{:.answer}
 
 
 ## Concatenating files
