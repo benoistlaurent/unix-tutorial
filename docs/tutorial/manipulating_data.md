@@ -430,11 +430,23 @@ We can see above that there are still repeated lines.
 This is because uniq remove repeated **consecutive** lines and here 
 repeated lines are not consecutive.
 
+That's why we need to sort the input file first:
 
-`uniq`
-`uniq -c`
-`uniq -d`
-`uniq -u`
+```bash
+$ sort animals/animals4.txt > animals4_sorted.txt
+$ uniq animals4_sorted.txt
+11 cat
+1 dog
+23 bird
+2 rabbit
+3 chicken
+```
+
+`uniq` has several useful options such has
+
+- `-c` for counting
+- `-d` for showing duplicate lines
+- `-u` for showing uniq lines
 
 
 ## Concatenating files
