@@ -102,6 +102,82 @@ tail -n5 iris.csv
 {:.answer}
 
 
+## Saving a command output to a file
+
+Most standard unix tools do not have an option for naming an output file.
+It is because the standard way to store a command output is by **redirecting**
+it to a file.
+This is done by using the greather-than sign `>`:
+
+```bash
+$ # Output is displayed on screen
+$ head -n5 iris.csv
+sepal_length,sepal_width,petal_length,petal_width,species
+5.1,3.5,1.4,0.2,setosa
+4.9,3,1.4,0.2,setosa
+4.7,3.2,1.3,0.2,setosa
+4.6,3.1,1.5,0.2,setosa
+
+$ # Output is redicted to tmp.csv, therefore not displayed on screen
+$ head -n5 iris.csv > tmp.csv
+
+$ # Display the content of tmp.csv
+$ cat tmp.csv
+sepal_length,sepal_width,petal_length,petal_width,species
+5.1,3.5,1.4,0.2,setosa
+4.9,3,1.4,0.2,setosa
+4.7,3.2,1.3,0.2,setosa
+4.6,3.1,1.5,0.2,setosa
+
+$ # Remove temporary file.
+$ rm tmp.csv
+```
+
+Importantly, `>` creates a new file, whether or not the command output
+contains something.
+**If the output file already exists, it is erased then created again.**
+
+**Question**: how to store the first 2 lines of `iris.csv` to `output.csv`?
+Once done, store the last 2 lines of `iris.csv` to `output.csv`. See
+by yourself that `output.csv` only contains the output of your last command.
+Remove `output.csv` when done.
+
+```bash
+$ head -2 iris.csv > output.csv
+$ cat output.csv
+sepal_length,sepal_width,petal_length,petal_width,species
+5.1,3.5,1.4,0.2,setosa
+$ tail -2 iris.csv > output.csv
+$ cat output.csv
+6.2,3.4,5.4,2.3,virginica
+5.9,3,5.1,1.8,virginica
+$ # The output contains only the last two lines of iris.csv, as
+$ # the system erased output.csv prior to writing the tail command output.
+$ rm output.csv  # cleaning
+```
+{:.answer}
+
+
+There is a second operator, made of two greater-than signs ('`>>`'), which
+allows to append output to an already existing file (note: if the file does not
+exist, it will be created).
+
+**Question**: how to store the first 2 and last 2 lines of `iris.csv`
+to `output.csv`? Once done, display it and remove `output.csv`
+
+```bash
+$ head -2 iris.csv > output.csv
+$ tail -2 iris.csv >> output.csv
+$ cat output.csv
+sepal_length,sepal_width,petal_length,petal_width,species
+5.1,3.5,1.4,0.2,setosa
+6.2,3.4,5.4,2.3,virginica
+5.9,3,5.1,1.8,virginica
+$ rm output.csv  # cleaning
+```
+{:.answer}
+
+
 ## File editors
 
 There are a number of terminal file editors.
