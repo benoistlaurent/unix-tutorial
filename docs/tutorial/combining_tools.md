@@ -40,7 +40,7 @@ $ grep -v canine tooth.csv | sort | cut -d ',' -f2 | head
 $ grep 2017 tooth.csv | grep -c canine
 2
 
-$ # If you're a big fan of pipe, you can use wc instead of the proper grep option
+$ # If you're a big fan of pipes, you can use wc instead of the proper grep option
 $ grep 2017 tooth.csv | grep canine | wc -l
 2
 ```
