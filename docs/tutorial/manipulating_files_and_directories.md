@@ -57,7 +57,7 @@ But this is only a convention and we need a better way to make sure of it.
 ### Identifying files and directories
 
 The command `ls -l` runs the command `ls` with the option `-l` (which stands
-for "long"):
+for "long
 
 ```bash
 ls -l
@@ -74,46 +74,59 @@ a directory.
 
 **Question**: use `man ls` to find how to print human readable file sizes.
 
-```bash
-$ ls -lh
-total 12K
-drwxr-xr-x 2 fish fish 4.0K Nov 14 15:31 creatures
--rw-r--r-- 1 fish fish 3.7K Nov 14 15:35 iris.csv
-drwxr-xr-x 2 fish fish 4.0K Nov 13 13:58 molecules
-```
+> **Solution**:
+> > The `-h` option allows to print human readable sizes.
+> > ```bash
+> > $ ls -lh
+> > total 12K
+> > drwxr-xr-x 2 fish fish 4.0K Nov 14 15:31 creatures
+> > -rw-r--r-- 1 fish fish 3.7K Nov 14 15:35 iris.csv
+> > drwxr-xr-x 2 fish fish 4.0K Nov 13 13:58 molecules
+> > ```
 {:.answer}
 
 **Question**: list the content of the directory named `molecules`.
 
-```bash
-$ ls molecules
-```
+> **Solution**:
+> > ```bash
+> > $ ls molecules
+> > ```
 {:.answer}
 
-**Question**: list the content of the directory named `molecules`.
 
-```bash
-$ ls molecules
-cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
-```
+**Question**: list the content of the directory named `molecules` with the
+element size.
+
+> **Solution**:
+> > ```bash
+> > $ ls -lh molecules
+> > -rw-r--r-- 1 fish fish 1.2K Nov 13 13:58 cubane.pdb
+> > -rw-r--r-- 1 fish fish  622 Nov 13 13:58 ethane.pdb
+> > -rw-r--r-- 1 fish fish  422 Nov 13 13:58 methane.pdb
+> > -rw-r--r-- 1 fish fish 1.8K Nov 13 13:58 octane.pdb
+> > -rw-r--r-- 1 fish fish 1.2K Nov 13 13:58 pentane.pdb
+> > -rw-r--r-- 1 fish fish  825 Nov 13 13:58 propane.pdb
+> > ```
 {:.answer}
+
 
 **Question**: list the content of the root directory.
 
-```bash
-$ ls /
-bin   cdrom  dev  home        initrd.img.old  lib64       media  opt   root  sbin  srv       sys  usr  vmlinuz
-boot  data   etc  initrd.img  lib             lost+found  mnt    proc  run   snap  swapfile  tmp  var
-```
+> **Solution**:
+> > ```bash
+> > $ ls /
+> > bin   cdrom  dev  home        initrd.img.old  lib64       media  opt   root  sbin  srv       sys  usr  vmlinuz
+> > boot  data   etc  initrd.img  lib             lost+found  mnt    proc  run   snap  swapfile  tmp  var
+> > ```
 {:.answer}
 
 **Question**: list the content of directory `home/fish` which is located
 in the parent directory of `/data`.
 
-```bash
-$ ls ../home/fish/
-Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
-```
+> > ```bash
+> > $ ls ../home/fish/
+> > Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+> > ```
 {:.answer}
 
 
@@ -160,22 +173,23 @@ $ du -h
 **Question**: use the manual to find `du`'s option that will limit recursion
 to a single subdirectory, then get the disk usage for `/home/fish`.
 
-```bash
-$ du -h --max-depth=1 /home/fish
-4.0K    /home/fish/Music
-4.0K    /home/fish/Templates
-1.9M    /home/fish/.cache
-4.0K    /home/fish/Pictures
-4.0K    /home/fish/Videos
-4.0K    /home/fish/Documents
-8.0K    /home/fish/.gnupg
-172K    /home/fish/.config
-4.0K    /home/fish/Public
-1.8M    /home/fish/.local
-4.0K    /home/fish/Downloads
-4.0K    /home/fish/Desktop
-3.9M    /home/fish
-```
+> **Solution**:
+> > ```bash
+> > $ du -h --max-depth=1 /home/fish
+> > 4.0K    /home/fish/Music
+> > 4.0K    /home/fish/Templates
+> > 1.9M    /home/fish/.cache
+> > 4.0K    /home/fish/Pictures
+> > 4.0K    /home/fish/Videos
+> > 4.0K    /home/fish/Documents
+> > 8.0K    /home/fish/.gnupg
+> > 172K    /home/fish/.config
+> > 4.0K    /home/fish/Public
+> > 1.8M    /home/fish/.local
+> > 4.0K    /home/fish/Downloads
+> > 4.0K    /home/fish/Desktop
+> > 3.9M    /home/fish
+> > ```
 {:.answer}
 
 
@@ -231,9 +245,10 @@ $ pwd
 **Question**: now that you are in the `creatures` directory, how to go back
 to the parent directory?
 
-```bash
-$ cd ..
-```
+> **Solution**:
+> > ```bash
+> > $ cd ..
+> > ```
 {:.answer}
 
 
@@ -304,9 +319,10 @@ To remove a directory, use can either use `rm -r` (**r**ecursive) or the
 
 **Question**: remove the directory `tempdir` we just created.
 
-```bash
-$ rmdir tempdir  # Alternatively (rm -r tempdir)
-```
+> **Solution**:
+> > ```bash
+> > $ rmdir tempdir  # Alternatively (rm -r tempdir)
+> > ```
 {:.answer}
 
 

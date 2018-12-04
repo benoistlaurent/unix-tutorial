@@ -36,14 +36,15 @@ $ grep -v canine tooth.csv | sort | cut -d ',' -f2 | head
 
 **Question**: in `tooth.csv`, what the canine count in 2017?
 
-```bash
-$ grep 2017 tooth.csv | grep -c canine
-2
-
-$ # If you're a big fan of pipes, you can use wc instead of the proper grep option
-$ grep 2017 tooth.csv | grep canine | wc -l
-2
-```
+> **Solution**:
+> > ```bash
+> > $ grep 2017 tooth.csv | grep -c canine
+> > 2
+> > 
+> > $ # If you're a big fan of pipes, you can use wc instead of the proper grep option
+> > $ grep 2017 tooth.csv | grep canine | wc -l
+> > 2
+> > ```
 {:.answer}
 
 

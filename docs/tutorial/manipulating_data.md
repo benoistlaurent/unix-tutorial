@@ -72,14 +72,15 @@ Displaying the beginning of the file, or *head*, is done thanks to the
 
 **Question**: use `head` to display the first 5 lines of `iris.csv`.
 
-```bash
-$ head -n5 iris.csv
-sepal_length,sepal_width,petal_length,petal_width,species
-5.1,3.5,1.4,0.2,setosa
-4.9,3,1.4,0.2,setosa
-4.7,3.2,1.3,0.2,setosa
-4.6,3.1,1.5,0.2,setosa
-```
+> **Solution**:
+> > ```bash
+> > $ head -n5 iris.csv
+> > sepal_length,sepal_width,petal_length,petal_width,species
+> > 5.1,3.5,1.4,0.2,setosa
+> > 4.9,3,1.4,0.2,setosa
+> > 4.7,3.2,1.3,0.2,setosa
+> > 4.6,3.1,1.5,0.2,setosa
+> > ```
 {:.answer}
 
 
@@ -90,15 +91,16 @@ Displaying the beginning of the file, or *tail*, is done thanks to the
 
 **Question**: use `tail` to display the last 5 lines of `iris.csv`.
 
-```bash
-$ tail -n5 iris.csv
-tail -n5 iris.csv
-6.7,3,5.2,2.3,virginica
-6.3,2.5,5,1.9,virginica
-6.5,3,5.2,2,virginica
-6.2,3.4,5.4,2.3,virginica
-5.9,3,5.1,1.8,virginica
-```
+> **Solution**:
+> > ```bash
+> > $ tail -n5 iris.csv
+> > tail -n5 iris.csv
+> > 6.7,3,5.2,2.3,virginica
+> > 6.3,2.5,5,1.9,virginica
+> > 6.5,3,5.2,2,virginica
+> > 6.2,3.4,5.4,2.3,virginica
+> > 5.9,3,5.1,1.8,virginica
+> > ```
 {:.answer}
 
 
@@ -142,19 +144,20 @@ Once done, store the last 2 lines of `iris.csv` to `output.csv`. See
 by yourself that `output.csv` only contains the output of your last command.
 Remove `output.csv` when done.
 
-```bash
-$ head -2 iris.csv > output.csv
-$ cat output.csv
-sepal_length,sepal_width,petal_length,petal_width,species
-5.1,3.5,1.4,0.2,setosa
-$ tail -2 iris.csv > output.csv
-$ cat output.csv
-6.2,3.4,5.4,2.3,virginica
-5.9,3,5.1,1.8,virginica
-$ # The output contains only the last two lines of iris.csv, as
-$ # the system erased output.csv prior to writing the tail command output.
-$ rm output.csv  # cleaning
-```
+> **Solution**:
+> > ```bash
+> > $ head -2 iris.csv > output.csv
+> > $ cat output.csv
+> > sepal_length,sepal_width,petal_length,petal_width,species
+> > 5.1,3.5,1.4,0.2,setosa
+> > $ tail -2 iris.csv > output.csv
+> > $ cat output.csv
+> > 6.2,3.4,5.4,2.3,virginica
+> > 5.9,3,5.1,1.8,virginica
+> > $ # The output contains only the last two lines of iris.csv, as
+> > $ # the system erased output.csv prior to writing the tail command output.
+> > $ rm output.csv  # cleaning
+> > ```
 {:.answer}
 
 
@@ -165,16 +168,17 @@ exist, it will be created).
 **Question**: how to store the first 2 and last 2 lines of `iris.csv`
 to `output.csv`? Once done, display it and remove `output.csv`
 
-```bash
-$ head -2 iris.csv > output.csv
-$ tail -2 iris.csv >> output.csv
-$ cat output.csv
-sepal_length,sepal_width,petal_length,petal_width,species
-5.1,3.5,1.4,0.2,setosa
-6.2,3.4,5.4,2.3,virginica
-5.9,3,5.1,1.8,virginica
-$ rm output.csv  # cleaning
-```
+> **Solution**:
+> > ```bash
+> > $ head -2 iris.csv > output.csv
+> > $ tail -2 iris.csv >> output.csv
+> > $ cat output.csv
+> > sepal_length,sepal_width,petal_length,petal_width,species
+> > 5.1,3.5,1.4,0.2,setosa
+> > 6.2,3.4,5.4,2.3,virginica
+> > 5.9,3,5.1,1.8,virginica
+> > $ rm output.csv  # cleaning
+> > ```
 {:.answer}
 
 
@@ -207,31 +211,33 @@ and characters in a file.
 
 **Question**: how to display only the number of lines in a file? of words? of characters?
 
-```bash
-$ # display only the number of lines
-$ wc -l creatures/basilisk.fasta
-28 creatures/basilisk.fasta
-$ # display only the number of words
-$ wc -w creatures/basilisk.fasta
-34 creatures/basilisk.fasta
-$ # display only the number of characters
-$ wc -c creatures/basilisk.fasta
-1708 creatures/basilisk.fasta
-```
+> **Solution**:
+> > ```bash
+> > $ # display only the number of lines
+> > $ wc -l creatures/basilisk.fasta
+> > 28 creatures/basilisk.fasta
+> > $ # display only the number of words
+> > $ wc -w creatures/basilisk.fasta
+> > 34 creatures/basilisk.fasta
+> > $ # display only the number of characters
+> > $ wc -c creatures/basilisk.fasta
+> > 1708 creatures/basilisk.fasta
+> > ```
 {:.answer}
 
 **Question**: how to display the number of lines in pdb files located in `molecules`?
 
-```bash
-$ wc -l molecules/*.pdb
-  20 molecules/cubane.pdb
-  12 molecules/ethane.pdb
-   9 molecules/methane.pdb
-  30 molecules/octane.pdb
-  21 molecules/pentane.pdb
-  15 molecules/propane.pdb
- 107 total
-```
+> **Solution**:
+> > ```bash
+> > $ wc -l molecules/*.pdb
+> >   20 molecules/cubane.pdb
+> >   12 molecules/ethane.pdb
+> >    9 molecules/methane.pdb
+> >   30 molecules/octane.pdb
+> >   21 molecules/pentane.pdb
+> >   15 molecules/propane.pdb
+> >  107 total
+> > ```
 {:.answer}
 
 
@@ -316,31 +322,32 @@ $ cut -d "," -f 1 tooth.csv
 
 **Question**: find two ways to extract the teeth column from `tooth.csv`.
 
-```bash
-$ # Extract characters 12 to end-of-line
-$ cut -c 12- tooth.csv
-molar
-molar
-molar
-premolar
-canine
-incisor
-premolar
-incisor
-incisor
-# [...]
-$ # Extract the second column using "," as column separator
-$ cut -d "," -f 2 tooth.csv
-molar
-molar
-molar
-premolar
-canine
-incisor
-premolar
-incisor
-incisor
-```
+> **Solution**:
+> > ```bash
+> > $ # Extract characters 12 to end-of-line
+> > $ cut -c 12- tooth.csv
+> > molar
+> > molar
+> > molar
+> > premolar
+> > canine
+> > incisor
+> > premolar
+> > incisor
+> > incisor
+> > # [...]
+> > $ # Extract the second column using "," as column separator
+> > $ cut -d "," -f 2 tooth.csv
+> > molar
+> > molar
+> > molar
+> > premolar
+> > canine
+> > incisor
+> > premolar
+> > incisor
+> > incisor
+> > ```
 {:.answer}
 
 
@@ -399,22 +406,23 @@ $ sort -nr animals/animals.txt
 
 **Question**: how to sort `tooth.csv` by increasing day number?
 
-```bash
-$ # We have to tell sort that the field separator we want to use is '-'
-$ # and then that we want to sort by the 3rd field.
-$ sort tooth.csv -t- -k3
-2017-11-01,premolar
-2017-12-02,incisor
-2015-12-03,canine
-2016-06-03,incisor
-2017-08-03,incisor
-2015-08-03,molar
-2016-06-03,premolar
-2017-03-04,canine
-2015-12-04,incisor
-2017-02-04,premolar
-# [...]
-```
+> **Solution**:
+> > ```bash
+> > $ # We have to tell sort that the field separator we want to use is '-'
+> > $ # and then that we want to sort by the 3rd field.
+> > $ sort tooth.csv -t- -k3
+> > 2017-11-01,premolar
+> > 2017-12-02,incisor
+> > 2015-12-03,canine
+> > 2016-06-03,incisor
+> > 2017-08-03,incisor
+> > 2015-08-03,molar
+> > 2016-06-03,premolar
+> > 2017-03-04,canine
+> > 2015-12-04,incisor
+> > 2017-02-04,premolar
+> > # [...]
+> > ```
 {:.answer}
 
 

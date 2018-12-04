@@ -153,11 +153,12 @@ arguments (e.g. `$1` is the first argument, `$10` the tenth argument, etc).
 **Question**: adapt the script so that it takes the input file name from
 the command-line.
 
-```bash
-FILE=$1
-HEAD=`head -1 $FILE`
-echo "$FILE: $HEAD"
-```
+> **Solution**:
+> > ```bash
+> > FILE=$1
+> > HEAD=`head -1 $FILE`
+> > echo "$FILE: $HEAD"
+> > ```
 {:.answer}
 
 
@@ -206,17 +207,18 @@ fi
 whether a single or multiple files are passed to the command-line.
 The script will display an error message if no input file is provided.
 
-```bash
-# The -ge operator stands for "greater or equal"
-if [ $# -ge 1 ]; then
-    FILENAMES=$*    
-    for FILE in $FILENAMES
-    do
-        HEAD=`head -1 $FILE`
-        echo "$FILE: $HEAD"    
-    done
-else
-    echo "ERROR: no file provided from command-line"
-fi
-```
+> **Solution**:
+> > ```bash
+> > # The -ge operator stands for "greater or equal"
+> > if [ $# -ge 1 ]; then
+> >     FILENAMES=$*    
+> >     for FILE in $FILENAMES
+> >     do
+> >         HEAD=`head -1 $FILE`
+> >         echo "$FILE: $HEAD"    
+> >     done
+> > else
+> >     echo "ERROR: no file provided from command-line"
+> > fi
+> > ```
 {:.answer}

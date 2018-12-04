@@ -174,24 +174,25 @@ $ tar xvzf creatures.tar.gz
 **Question**: create a compressed archive of the directory `molecules`. What
 is archive size? How does it compare to the directory's size?
 
-```bash
-$ tar cvzf molecules.tar.gz molecules
-molecules/
-molecules/octane.pdb
-molecules/propane.pdb
-molecules/cubane.pdb
-molecules/methane.pdb
-molecules/ethane.pdb
-molecules/pentane.pdb
-
-$ ls -lh molecules.tar.gz
--rw-rw-r-- 1 fish fish 1.6K Nov 23 11:42 molecules.tar.gz
-
-$ du -h molecules
-28K molecules
-
-$ # The archive is only 1.6K compared to the 28K of the directory.
-```
+> **Solution**:
+> > ```bash
+> > $ tar cvzf molecules.tar.gz molecules
+> > molecules/
+> > molecules/octane.pdb
+> > molecules/propane.pdb
+> > molecules/cubane.pdb
+> > molecules/methane.pdb
+> > molecules/ethane.pdb
+> > molecules/pentane.pdb
+> > 
+> > $ ls -lh molecules.tar.gz
+> > -rw-rw-r-- 1 fish fish 1.6K Nov 23 11:42 molecules.tar.gz
+> > 
+> > $ du -h molecules
+> > 28K molecules
+> > 
+> > $ # The archive is only 1.6K compared to the 28K of the directory.
+> > ```
 {:#answer}
 
 ## Using links
