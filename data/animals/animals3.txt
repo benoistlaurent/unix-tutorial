@@ -3,3 +3,4 @@
 11 cat
 23 bird
 3 chicken
+7 pig

@@ -27,7 +27,7 @@ END
 
 Actually, `cat`'s primary purpose is to concatenate files.
 Meaning that a way of using it would actually be to give several files as
-input in order to get the concatenation of the two files:
+input in order to get the concatenation of the files:
 
 ```bash
 $ cat molecules/methane.pdb molecules/ethane.pdb
@@ -191,6 +191,15 @@ the advantage that keyboard shortcut are display at the bottom of the screen.
 **Question**: use `nano` to create a file `animals.txt` with 3 lines: "dog",
 "cat", "rabbit".
 
+> **Solution**:
+> To open a new or existing file, the command whould be `nano <FILENAME>`.
+> In our case `nano animals.txt`.
+> 
+> Then, just enter the 3 lines and hit Ctrl+X to exit.
+> `nano` prompts whether or not you want to save the changes you made.
+> So hit `Y` to save the changes.
+{:.answer}
+
 Other historical and still widely used editors are `vi` and `emacs`, which
 are both very powerful.
 I would personnaly recommand using `vi` as it uses keyboard shortcuts which
@@ -281,10 +290,13 @@ $ grep canine tooth.csv
 
 **Question**: how to get the number of non-canine line?
 
-```bash
-$ grep -vc canine tooth.csv
-81
-```
+> **Solution**:
+> > ```bash
+> > $ grep -vc canine tooth.csv
+> > 80
+> > ```
+{:.answer}
+
 
 ## Extracting a file columns
 
@@ -386,23 +398,25 @@ $ sort animals/animals.txt
 
 **Question**: how to sort `animals/animals.txt` properly? How to sort it in decreasing order?
 
-```bash
-# Numeric sort
-$ sort -n animals/animals.txt
-1 dog
-2 rabbit
-3 chicken
-11 cat
-23 bird
-
-# Reverse numeric sort
-$ sort -nr animals/animals.txt
-23 bird
-11 cat
-3 chicken
-2 rabbit
-1 dog
-```
+> **Solution**:
+> > ```bash
+> > # Numeric sort
+> > $ sort -n animals/animals.txt
+> > 1 dog
+> > 2 rabbit
+> > 3 chicken
+> > 11 cat
+> > 23 bird
+> > 
+> > # Reverse numeric sort
+> > $ sort -nr animals/animals.txt
+> > 23 bird
+> > 11 cat
+> > 3 chicken
+> > 2 rabbit
+> > 1 dog
+> > ```
+{:.answer}
 
 **Question**: how to sort `tooth.csv` by increasing day number?
 
@@ -436,6 +450,11 @@ display a single file and to concatenate several file one after the other.
 ```bash
 $ # Concatenate animals/animals.txt column wide
 $ paste animals/animals.txt animals/animals.txt
+2 rabbit    2 rabbit
+1 dog   1 dog
+11 cat  11 cat
+23 bird 23 bird
+3 chicken   3 chicken
 
 $ # Concatenate animals/animals.txt column wide with custom separator (" - ")
 $ paste -d "|" animals/animals.txt animals/animals.txt
@@ -455,25 +474,38 @@ These are the most common tools.
 `cmp` outputs the position of the difference if files are different, else nothing:
 
 ```bash
-$ cmp animals.txt animals2.txt
-animals.txt animals2.txt differ: byte 23, line 4
+$ cmp animals/animals.txt animals/animals2.txt
+animals/animals.txt animals/animals2.txt differ: byte 11, line 2
 ```
 
 `diff` outputs the line number of the difference, and the difference:
 
 ```bash
-$ diff animals.txt animals2.txt
-3a4
-> 6 cow
+diff animals/animals.txt animals/animals2.txt
+2d1
+< 1 dog
 ```
 
-This interprets as "there is a difference on line 3 of animals.txt which translates
-to line 4 of animals2.txt: the line '6 cow' has been inserted".
+This interprets as "there is a difference on line 2 of animals.txt which translates
+to line 1 of animals2.txt: the line '1 dog' has been deleted".
+
+**Question**: what diff option allows to compare the files side-by-side?
+
+> **Solution**:
+> > ```bash
+> > diff -y animals/animals.txt animals/animals2.txt
+> > 2 rabbit                            2 rabbit
+> > 1 dog                                 <
+> > 11 cat                              11 cat
+> > 23 bird                             23 bird
+> > 3 chicken                           3 chicken
+> > ```
+{:.answer}
 
 
 ## Modifying file content
 
-To make a simple change, you probably want to use a classic text editor.
+To make simple changes, you probably want to use a classic text editor.
 
 But sometimes, you need to make more complicated changes, e.g. changing all
 the occurences of a string in a file.
@@ -516,7 +548,7 @@ $ sed '1,2d' animals/animals.txt
 #### By pattern
 
 ```bash
-$ # Remove the line that contains 'chicken'
+$ # Remove all lines that contains 'chicken'
 $ sed '/chicken/d' animals/animals.txt
 2 rabbit
 1 dog

@@ -1,5 +1,4 @@
 2 rabbit
-1 dog
 11 cat
 23 bird
 3 chicken
