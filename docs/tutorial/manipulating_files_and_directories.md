@@ -44,7 +44,7 @@ working directory.
 
 ```bash
 $ ls
-creatures  iris.csv  molecules
+animals  creatures  iris.csv  molecules  tooth.csv
 ```
 
 As you can see, based on this result, there is no way to distinguish files from
@@ -57,14 +57,16 @@ But this is only a convention and we need a better way to make sure of it.
 ### Identifying files and directories
 
 The command `ls -l` runs the command `ls` with the option `-l` (which stands
-for "long
+for "long")
 
 ```bash
-ls -l
-total 12
+$ ls -l
+total 20
+drwxr-xr-x 2 fish fish 4096 Nov 23 15:11 animals
 drwxr-xr-x 2 fish fish 4096 Nov 14 15:31 creatures
 -rw-r--r-- 1 fish fish 3715 Nov 14 15:35 iris.csv
 drwxr-xr-x 2 fish fish 4096 Nov 13 13:58 molecules
+-rw-r--r-- 1 fish fish 1855 Nov 20 16:07 tooth.csv
 ```
 
 The character `d` starting each path line indicates that this path is
@@ -77,11 +79,12 @@ a directory.
 > **Solution**:
 > > The `-h` option allows to print human readable sizes.
 > > ```bash
-> > $ ls -lh
-> > total 12K
+> > total 20K
+> > drwxr-xr-x 2 fish fish 4.0K Nov 23 15:11 animals
 > > drwxr-xr-x 2 fish fish 4.0K Nov 14 15:31 creatures
 > > -rw-r--r-- 1 fish fish 3.7K Nov 14 15:35 iris.csv
 > > drwxr-xr-x 2 fish fish 4.0K Nov 13 13:58 molecules
+> > -rw-r--r-- 1 fish fish 1.9K Nov 20 16:07 tooth.csv
 > > ```
 {:.answer}
 
@@ -90,6 +93,7 @@ a directory.
 > **Solution**:
 > > ```bash
 > > $ ls molecules
+> > cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 > > ```
 {:.answer}
 
@@ -100,6 +104,7 @@ element size.
 > **Solution**:
 > > ```bash
 > > $ ls -lh molecules
+> > total 24K
 > > -rw-r--r-- 1 fish fish 1.2K Nov 13 13:58 cubane.pdb
 > > -rw-r--r-- 1 fish fish  622 Nov 13 13:58 ethane.pdb
 > > -rw-r--r-- 1 fish fish  422 Nov 13 13:58 methane.pdb
@@ -115,18 +120,25 @@ element size.
 > **Solution**:
 > > ```bash
 > > $ ls /
-> > bin   cdrom  dev  home        initrd.img.old  lib64       media  opt   root  sbin  srv       sys  usr  vmlinuz
-> > boot  data   etc  initrd.img  lib             lost+found  mnt    proc  run   snap  swapfile  tmp  var
+> > bin   dev   initrd.img      lib64       mnt   root  srv       tmp  vmlinuz
+> > boot  etc   initrd.img.old  lost+found  opt   run   swapfile  usr  vmlinuz.old
+> > data  home  lib             media       proc  sbin  sys       var
 > > ```
 {:.answer}
+
 
 **Question**: list the content of directory `home/fish` which is located
 in the parent directory of `/data`.
 
+> **Solution**:
 > > ```bash
 > > $ ls ../home/fish/
-> > Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
 > > ```
+> > `..` is the shortcut for the parent directory of the current directory.
+> > In the same fashion, `../..` would be the parent of the parent.
+> > 
+> > In this example, there is no output to the `ls` command, which basically
+> > means that the directory is empty.
 {:.answer}
 
 
@@ -156,39 +168,37 @@ The command `du` (**d**isk **u**sage) will give us this information:
 
 ```bash
 $ du
-28  ./molecules
 12  ./creatures
-48  .
+28  ./molecules
+20  ./animals
+72  .
 ```
 
 As for `ls`, the `-h` option allows to display human readable sizes:
 
 ```bash
 $ du -h
-28K ./molecules
 12K ./creatures
-48K .
+28K ./molecules
+20K ./animals
+72K .
 ```
 
 **Question**: use the manual to find `du`'s option that will limit recursion
-to a single subdirectory, then get the disk usage for `/home/fish`.
+to a single subdirectory, then get the disk usage for `/usr`.
 
 > **Solution**:
 > > ```bash
-> > $ du -h --max-depth=1 /home/fish
-> > 4.0K    /home/fish/Music
-> > 4.0K    /home/fish/Templates
-> > 1.9M    /home/fish/.cache
-> > 4.0K    /home/fish/Pictures
-> > 4.0K    /home/fish/Videos
-> > 4.0K    /home/fish/Documents
-> > 8.0K    /home/fish/.gnupg
-> > 172K    /home/fish/.config
-> > 4.0K    /home/fish/Public
-> > 1.8M    /home/fish/.local
-> > 4.0K    /home/fish/Downloads
-> > 4.0K    /home/fish/Desktop
-> > 3.9M    /home/fish
+> > $ du -h --max-depth=1 /usr
+> > 136M    /usr/src
+> > 60K /usr/local
+> > 131M    /usr/lib
+> > 157M    /usr/share
+> > 200K    /usr/include
+> > 41M /usr/bin
+> > 4.0K    /usr/games
+> > 8.1M    /usr/sbin
+> > 473M    /usr
 > > ```
 {:.answer}
 
@@ -201,7 +211,10 @@ Being able to see a directory tree structure can be very useful.
 ```bash
 $ ls -R
 .:
-creatures  iris.csv  molecules
+animals  creatures  iris.csv  molecules  tooth.csv
+
+./animals:
+animals2.txt  animals3.txt  animals4.txt  animals.txt
 
 ./creatures:
 basilisk.fasta  unicorn.fasta
@@ -216,17 +229,25 @@ For this reason, the `tree` program may be useful:
 ```bash
 $ tree
 .
+├── animals
+│   ├── animals2.txt
+│   ├── animals3.txt
+│   ├── animals4.txt
+│   └── animals.txt
 ├── creatures
 │   ├── basilisk.fasta
 │   └── unicorn.fasta
 ├── iris.csv
-└── molecules
-    ├── cubane.pdb
-    ├── ethane.pdb
-    ├── methane.pdb
-    ├── octane.pdb
-    ├── pentane.pdb
-    └── propane.pdb
+├── molecules
+│   ├── cubane.pdb
+│   ├── ethane.pdb
+│   ├── methane.pdb
+│   ├── octane.pdb
+│   ├── pentane.pdb
+│   └── propane.pdb
+└── tooth.csv
+
+3 directories, 14 files
 ```
 
 
@@ -261,7 +282,7 @@ and the target:
 ```bash
 $ cp iris.csv iris-copy.csv
 $ ls
-creatures  iris-copy.csv  iris.csv  molecules
+animals  creatures  iris-copy.csv  iris.csv  molecules  tooth.csv
 ```
 
 If the target name is a directory, the file will be copied to the directory
@@ -270,18 +291,19 @@ with the same name:
 ```bash
 $ cp iris.csv /home/fish
 $ ls /home/fish/
-Desktop  Documents  Downloads  iris.csv  Music  Pictures  Public  Templates  Videos
+iris.csv
 ```
 
-**Question**: find in the manual how to copy a directory recursively, then
-copy `creatures` to `tmp`.
+**Question**: find in the manual how to copy a whole directory (recursive copy),
+then copy `creatures` to `tmp`.
 
-```bash
-$ cp -r creatures /tmp
-$ ls /tmp/creatures
-basilisk.fasta  unicorn.fasta
-```
-
+> **Solution**:
+> > ```bash
+> > $ cp -r creatures /tmp
+> > $ ls /tmp/creatures
+> > basilisk.fasta  unicorn.fasta
+> > ```
+{:.answer}
 
 ## Moving files and directories
 
@@ -405,7 +427,7 @@ $ find . -type f -name 'c*'
 ./molecules/cubane.pdb
 
 $ # find only directories starting with "c"
-$ find . -type f -name 'c*'
+$ find . -type d -name 'c*'
 ./creatures
 ```
 
