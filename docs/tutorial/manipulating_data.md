@@ -510,6 +510,7 @@ To make simple changes, you probably want to use a classic text editor.
 But sometimes, you need to make more complicated changes, e.g. changing all
 the occurences of a string in a file.
 
+
 ### Replacing all occurences of a word in a file
 
 To to this, `sed` is probably the most straight-forward solution:

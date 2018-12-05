@@ -34,10 +34,12 @@ $ wc -l molecules/p*.pdb
 **Question**: count the number of lines in every files in the directory
 `creatures` then use a pipe to get only the total number.
 
-```bash
-$ wc -l creatures/* | tail -1
-  56 total
-```
+> **Solution**:
+> > ```bash
+> > $ wc -l creatures/* | tail -1
+> >   56 total
+> > ```
+{:.answer}
 
 ## Writing a script
 
@@ -69,9 +71,9 @@ use it in combination with `tail` to only get the last commands used:
 
 ```bash
 $ history | tail -n 3
-wc -l molecules/*
-wc -l molecules/p*.pdb
-wc -l creatures/* | tail -1
+  120  wc -l molecules/p*.pdb
+  121  wc -l creatures/* | tail -1
+  122  history |tail -n 3
 ```
 
 
@@ -101,8 +103,8 @@ echo "$FILENAMES"
 
 ### Writing our first script: a file's first line
 
-Let's say we want to write a script that displays the first line of a file.
-We want to get on the same line the file name and the first line.
+Let's say we want to write a script that displays the first line of a file
+with the file's name next to it.
 
 Let's create `first_line.bash` with a text editor and write those lines:
 

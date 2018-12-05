@@ -6,11 +6,23 @@
 
 ## Using the output of a command as the input of another
 
-We've already seen how to save the output of a command into a file.
+We have already seen how to save the output of a command into a file.
 Obviously, this new file can be used as input for the next command.
-Example: remove canine from `tooth.csv` and then get the first 5 rows.
 
-A prefered option would be to use a **pipe**, which meaning redirecting the
+Example:
+
+```bash
+$ # Remove canine from `tooth.csv` and then get the first 5 rows.
+$ grep -v canine tooth.csv > /tmp/tooth_not_canine.csv
+$ head -n5 /tmp/tooth_not_canine.csv
+2015-08-03,molar
+2015-06-21,molar
+2015-10-26,molar
+2017-01-30,premolar
+2016-07-14,incisor
+```
+
+A prefered option would be to use a **pipe**, which means redirecting the
 output of a command directly into the input of another one, without using any
 temporary file.
 
@@ -31,10 +43,22 @@ $ grep -v canine tooth.csv | head -n 5
 The number of commands in a pipe is virtually infinite:
 
 ```bash
+$ # Get the non-canine teeth rom tooth.csv, sort by date, get only the 
+$ # teeth column, get the first 10 rows.
 $ grep -v canine tooth.csv | sort | cut -d ',' -f2 | head
+incisor
+molar
+incisor
+premolar
+premolar
+molar
+premolar
+molar
+molar
+incisor
 ```
 
-**Question**: in `tooth.csv`, what the canine count in 2017?
+**Question**: in `tooth.csv`, what is the canine count in 2017?
 
 > **Solution**:
 > > ```bash
@@ -94,5 +118,3 @@ $ sort animals/animals4.txt | uniq
 - `-c` for counting
 - `-d` for showing duplicate lines
 - `-u` for showing uniq lines
-
-
