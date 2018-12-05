@@ -42,4 +42,3 @@ Importantly, and as its name suggests, this tool will kill **all** processes
 named `PROCNAME`.
 Meaning that you cannot use this tools to kill only one instance of a program
 if you have multiple instances running (you have to use `kill` instead).
-
