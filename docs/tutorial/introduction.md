@@ -17,7 +17,7 @@ with `-` or ``--``.
 
 Example:
 
-![image](/assets/img/tutorial/command_example.001.jpeg)
+![image]({{ site.url }}/unix_tutorial/assets/img/tutorial/command_example.001.jpeg)
 
 
 ## Special names
