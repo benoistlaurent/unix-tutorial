@@ -1,37 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" media="screen" type="text/css">
-    <link rel="stylesheet" href="{{ '/assets/css/print.css' | relative_url }}" media="print" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ '/assets/css/bootstrap.css' | relative_url }}" />
-    <link rel="stylesheet" type="text/css" href="{{ '/assets/css/bootstrap-theme.css' | relative_url }}" />
-
-{% seo %}
-  </head>
-
-  <body>
-    <header>
-      <div class="inner">
-        <a href="{{ '/' | absolute_url }}">
-          <h1>{{ site.title | default: site.github.repository_name }}</h1>
-        </a>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
-      </div>
-    </header>
- 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          {{ content }}
-        </section>
-      </div>
-    </div>
-
-    <script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/bootstrap.min.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/tutorial.js' | relative_url }}"></script>
-  </body>
-</html>
+---
+layout: base
+---
+{{ content }}
+<div class="link-back">
+  <a href="{{ '/tutorial' | relative_url }}">Back to tutorial homepage</a>
+</div>
