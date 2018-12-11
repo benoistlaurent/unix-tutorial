@@ -94,7 +94,6 @@ Displaying the beginning of the file, or *tail*, is done thanks to the
 > **Solution**:
 > > ```bash
 > > $ tail -n5 iris.csv
-> > tail -n5 iris.csv
 > > 6.7,3,5.2,2.3,virginica
 > > 6.3,2.5,5,1.9,virginica
 > > 6.5,3,5.2,2,virginica

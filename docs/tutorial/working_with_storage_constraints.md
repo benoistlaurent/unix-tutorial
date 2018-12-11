@@ -193,7 +193,7 @@ is archive size? How does it compare to the directory's size?
 > > 
 > > $ # The archive is only 1.6K compared to the 28K of the directory.
 > > ```
-{:#answer}
+{:.answer}
 
 ## Using links
 
