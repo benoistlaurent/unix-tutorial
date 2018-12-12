@@ -146,7 +146,7 @@ $ sudo make install
 ## Application: hello world
 
 We are going to install the program `hello` which can be downloaded at
-`https://github.com/benoistlaurent/unix_tutorial/blob/master/data/software/hello-1.0.0.tar.gz`.
+`https://github.com/benoistlaurent/unix_tutorial/raw/master/data/software/hello-1.0.0.tar.gz`.
 
 **Question**: create the directory `/data/software` and download `hello-1.0.0.tar.gz` in this
 directory using the command `wget`.
