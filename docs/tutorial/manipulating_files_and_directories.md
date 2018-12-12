@@ -409,8 +409,11 @@ $ find . -size '+2k'
 
 ```bash
 $ # find files and directories modified in the last 60 days
+$ find . -mtime -60
+# [...]
+$ # find files and directories modified in more than 60 days ago
 $ find . -mtime +60
-$ # no result found
+# [...]
 ```
 
 
