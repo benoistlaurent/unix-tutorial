@@ -12,7 +12,7 @@ The root directory is identified by `/`.
 As an example, `/home/benoist` is a directory located in the `home` directory,
 itself located in the root directory.
 
-`home/benoist/list.txt` is a file located in `/home/benoist`.
+`/home/benoist/list.txt` is a file located in `/home/benoist`.
 
 Importantly, one cannot know if a path refers to a file or a directory simply
 based on its name.
