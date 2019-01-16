@@ -4,10 +4,15 @@ Unix Tutorial
 
 This is a unix tutorial intented for scientist with little or no unix experience.
 
-**Contributors**:
+- GitHub repo: https://github.com/benoistlaurent/unix_tutorial
+- Website: https://benoistlaurent.github.io/unix_tutorial/tutorial
+- License: `Creative Commons Attribution 4.0 International License`_
 
-- Benoist LAURENT (main developper)
-- Ingrid LAFONTAINE
+
+Contributors
+------------
+
+- Benoist LAURENT
 
 
 Run a local Jekyll server
@@ -19,3 +24,6 @@ Run a local Jekyll server
     eval "$(~/.rbenv/bin/rbenv init -)"
     rbenv global 2.5.1
     bundle exec jekyll serve -w
+
+
+.. __`Creative Commons Attribution 4.0 International License`: https://github.com/benoistlaurent/unix_tutorial/blob/master/LICENSE

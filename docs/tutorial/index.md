@@ -28,3 +28,8 @@ Take the time you need, explore, test, fail, succeed.
 - [Environment](environment)
 - [Installing a software](installing_a_software)
 - [Working on a remote machine](working_on_a_remote_machine)
+
+
+## Contributors
+
+- Benoist LAURENT, Research Engineer, CNRS
