@@ -26,4 +26,4 @@ Run a local Jekyll server
     bundle exec jekyll serve -w
 
 
-.. __`Creative Commons Attribution 4.0 International License`: https://github.com/benoistlaurent/unix_tutorial/blob/master/LICENSE
+.. _`Creative Commons Attribution 4.0 International License`: https://github.com/benoistlaurent/unix_tutorial/blob/master/LICENSE
