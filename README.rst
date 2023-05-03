@@ -4,8 +4,8 @@ Unix Tutorial
 
 This is a unix tutorial intented for scientist with little or no unix experience.
 
-- GitHub repo: https://github.com/benoistlaurent/unix_tutorial
-- Website: https://benoistlaurent.github.io/unix_tutorial/tutorial
+- GitHub repo: https://github.com/benoistlaurent/unix-tutorial
+- Website: https://benoistlaurent.github.io/unix-tutorial/tutorial
 - License: `Creative Commons Attribution 4.0 International License`_
 
 
